@@ -1,0 +1,158 @@
+﻿@using System.Data;
+@{
+    ViewBag.Title = "anime";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="site.css" asp-append-version="true" />
+    <style>
+        .headtext {
+            text-align: center;
+            color: hsl(0, 0%, 0%);
+            background-color: Red;
+            border: dotted red;
+            <!-- padding: 40px; -->
+            font-size: 25pt
+        }
+
+        body {
+            background-color: black;
+            <!-- padding-top: 10px; /* Adjust body padding to avoid content overlapping with fixed navbar */ -->
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            border: solid red;
+            <!-- padding: 5px; -->
+        }
+
+        .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .text2 {
+            text-align: center;
+            /*            background-color: rgba(255,0,0,0.7);*/
+            /*            color: black;*/
+            /*            background-color: black;*/
+            /*            <!-- black; -->
+            <!-- border: dotted red; -->*/
+            font-size: 20pt
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Ensure the video is behind other content */
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Ensure the video is behind other content */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="~/siteImage/GvS.mp4" type="video/mp4">
+            <!-- Add additional video sources for different formats if needed -->
+
+        </video>
+    </div>
+    <!-- Page Content -->
+
+    <div class="container">
+        <div class="text2">
+            <div>
+                <p> </p>
+            </div>
+            <!-- <iframe src="demo_iframe.htm" style="height:200px;width:300px;" title="Iframe Example"></iframe> -->
+            <div style="font-size:30pt;color:white;text-align:centeR">
+                <p>Now Showing!</p>
+            </div>
+
+        </div>
+        <div class="container" style="color:black;padding-right:60pt;padding-top:30pt;padding-left:160pt;margin:0 auto;width:80%">
+            <div style="padding-left: 60pt;font-size:15px">
+                <h1 style="color:black;text-align:center">
+                    Delete A Show
+                </h1>
+                <form action="/Home/movies" method="post">
+                    <table border="1" bgcolor="red" height="80" width="300">
+                        <tr>
+                            <td>Genre</td>
+                            <td><input type="text" name="gen" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center"><input type="submit" value="Search" /></td>
+                        </tr>
+                    </table>
+                    @ViewBag.result
+                </form>
+            </div>
+        </div>
+        <p style="color:black">
+            1
+            1
+        </p>
+        <!-- <p style="color:black;font-size: 5pt"> 3</p> -->
+        <!-- <iframe width="800" height="425" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+
+        <div>
+            @foreach (DataRow row in Model.Rows)
+            {
+                <div style="font-size:20pt;text-align: center;background-color:red;color:white">@row["Mname"]</div>
+                <div>
+                    <p style="color:black;font-size: 5pt"> 3</p>
+                    <a href="/Home/booking?data= @row["Mname"]">
+                        <img src="~/siteImage/@row["picture"]" alt="oppenheimer" height=350 width=550 />
+                    </a>
+                    <div style="font-size:15pt;text-align: center;color:white">Genres: @row["genre"]</div>
+                    <div style="font-size:15pt;text-align: center;color:white">Age Rating: @row["Age_limit"]</div>
+                    <div style="font-size:15pt;text-align: center;color:white">Rating: @row["Rating"] /6</div>
+                    <p style="color:black;font-size: 5pt"> 3</p>
+                </div>
+
+            }
+        </div>
+        
+        <p style="color:black;font-size: 5pt">  </p>
+    
+        <div style="color:black;">
+            <p>  </p>
+        </div>
+    </div>
+
+    <div style="color:black;font-size: 20pt">
+        <p>  </p>
+    </div>
+    <div style="font-size:30pt;color:white;">
+        <p>Well,what are you waiting for?</p>
+    </div>
+
+</body>
+</html>

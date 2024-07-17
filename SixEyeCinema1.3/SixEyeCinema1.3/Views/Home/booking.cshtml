@@ -1,0 +1,235 @@
+﻿
+@{ ViewData["Title"] = "Bookings";
+    DateTime current = DateTime.Now.Date;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //DataTable dt =  getScreen();
+}
+
+@using System.Data;
+
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+@*<div class="body" style="backdrop-filter: blur(50px);">*@
+@*<div class="text-center" >*@
+<h2 class="display-4"></h2>
+@*<iframe width="800" height="425" src="https://www.youtube.com/embed/_inKs4eeHiI?si=O8fBXqJI-wTh82PQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>*@
+<div class="video-container">
+    <video autoplay muted loop>
+        <source src="~/siteImage/my.mp4" type="video/mp4">
+        <!-- Add additional video sources for different formats if needed -->
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<p>
+    <br />
+    <br />
+    <br />
+</p>
+
+@if (@ViewData["Screen"] == "1")
+{
+    <h1 style="padding-left: 200px; padding-right: 200px; font-size: 30pt; font-family: 'Times New Roman', Times, serif">@Session["Mname"]</h1>
+    <div style="margin: 0 auto; color: black;font-size: 20px; padding-left: 260pt">
+        <table border="1" style="border-color:red">
+            <tr bgcolor="red" style="border-spacing:20px">
+                <th style="border: 1px solid black;">Date</th>
+                <th style="border: 1px solid black;">Screen</th>
+                <th style="border: 1px solid black;">Time Slot</th>
+                <th style="border: 1px solid black;">book</th>
+
+            </tr>
+            @foreach (DataRow row in Model.DataFromFirstProcedure.Rows)
+            {
+                <tr bgcolor="black" style="border-spacing:20px">
+
+                    <td style="color: red ;border: 1px solid red;">@row["Mdate"]</td>
+                    <td style="color: red ;border: 1px solid red;">@row["Screen"]</td>
+                    <td style="color: red ;border: 1px solid red;">@row["Time_slotId"]</td>
+                    <td>
+                        <a href="/Home/booking?data=@row["Mdate"];@row["Screen"]:@row["Time_slotId"]"> book </a>
+                    </td>
+
+                </tr>
+            }
+        </table>
+        <div>
+            <p>
+                <br />
+            </p>
+        </div>
+        <div style="float:left">
+            <div style="text-align: center;color:white;font-family:'Times New Roman', Times, serif;padding-left:70pt">
+                <h1>Movie Reviews</h1>
+            </div>
+
+            <div style="display: flex; justify-content: center;">
+                <div style="max-width: 1100px; padding: 20px;padding-left:80pt">
+                    @foreach (DataRow row in Model.DataFromSecondProcedure.Rows)
+                    {
+                        <div style="background-color: rgba(255, 0, 0, 0.7); color: white; margin-bottom: 20px; padding: 20px;">
+
+                            <p>@row["ReviewText"]</p>
+                        </div>
+                        <br />
+
+                    }
+                </div>
+            </div>
+
+
+        </div>
+        <p>
+            <br />
+            <br />
+        </p>
+    </div>
+    <div>
+        <p>
+
+            <br />
+            <br />
+            <br />
+        </p>
+    </div>
+    <div>
+        <p>
+
+            <br />
+            <br />
+            <br />
+        </p>
+    </div>
+}
+
+else
+{
+    if (@ViewData["Uname"] != "%" && @ViewData["Email"] != "%")
+    {
+
+
+        <div style="justify-content:center;backdrop-filter:blur(10%) ;margin:0 auto;width:200pt;height:200pt">
+            <div class="container" style="padding-bottom:40pt">
+                <div class="container" style="justify-content: center; font-size: 20pt; font-family: 'Times New Roman', Times, serif">
+                    Name: @Session["name"]
+
+
+                </div>
+                <div style="justify-content:center;font-size:20pt ; font-family:'Times New Roman', Times, serif">
+                    Email:   @foreach (DataRow row in Model.Rows)
+                    {@row["email"]}
+                </div>
+                <div style="justify-content: center; font-size: 20pt; font-family: 'Times New Roman', Times, serif">
+                    Movie:  @foreach (DataRow row in Model.Rows)
+                    {@row["Mname"]}
+                </div>
+                <div style="justify-content: center; font-size: 20pt; font-family: 'Times New Roman', Times, serif">
+                    Tickets: @foreach (DataRow row in Model.Rows)
+                    {@row["Tickets"]}
+                </div>
+                <div style="justify-content: center; font-size: 20pt; font-family: 'Times New Roman', Times, serif">
+                    Screen:   @foreach (DataRow row in Model.Rows)
+                    {@row["Scid"]}
+                </div>
+                <div style="justify-content: center; font-size: 20pt; font-family: 'Times New Roman', Times, serif">
+                    Time:  @foreach (DataRow row in Model.Rows)
+                    {@row["time_slotId"]}
+                </div>
+                <div style="justify-content: center; font-size: 20pt; font-family: 'Times New Roman', Times, serif">
+                    total Amount:   @foreach (DataRow row in Model.Rows)
+                    {@row["TotalPrice"]}
+                </div>
+                <div style="justify-content: center; font-size: 20pt; font-family: 'Times New Roman', Times, serif">
+                    Date:   @current.ToString("yyyy-MM-dd")
+                </div>
+            </div>
+
+        </div>}
+
+    else
+    {
+
+        <p style="font-size:30pt;font-family:'Times New Roman', Times, serif">@Session["Mname"]</p>
+        <div class="form-background">
+            @*<div style="font-family:'Times New Roman', Times, serif">
+                    <h1>Booking Info</h1>
+                </div>*@
+            <form method="post">
+                <div>
+                    <input type="hidden" name="movie" value="@((string)Session["Mname"])">
+
+                    <label for="Uname">Enter Your Name</label>
+                    <p></p>
+                    <div class="form-group" style="padding-left: 20px; backdrop-filter: blur(50px)">
+                        <input id="user" rows="1" name="user" value="@(!string.IsNullOrEmpty(Session["name"]?.ToString()) ? Session["name"].ToString() : "")" style="width:400px" asp-for="user" class="form-control" />
+                    </div>
+                    <p></p>
+                    <label for="UserEmail">Enter Your Email</label>
+                    <p></p>
+                    <div class="form-group" style="padding-left: 20px">
+                        <input type="email" id="email" name="email" value="@(!string.IsNullOrEmpty(Session["email"]?.ToString()) ? Session["email"].ToString() : "")" style="width:400px" class="form-control" required>
+                    </div>
+                    <p></p>
+                    <label for="date">Enter your Date </label>
+                    <p></p>
+                    <div class="form-group" style="padding-left: 20px">
+                        <select type="date" id="date" name="date" style="width:400px" asp-for="date" class="form-control">
+                            <option value="@((string)Session["Mdate"])">@Session["Mdate"]</option>
+                        </select>
+                    </div>
+                    <p></p>
+                    <label for="Screen">Select The Screen</label>
+                    <p></p>
+                    <div class="form-group" style="padding-left: 20px">
+                        <select id="Screen" name="Screen" style="width:400px" asp-for="scid" class="form-control">
+                            <option value="@((string)Session["Screen"])">@Session["Screen"]</option>
+                        </select>
+                    </div>
+                    <p></p>
+                    <label for="tim">Select the Time Slot</label>
+                    <p></p>
+                    <div class="form-group" style="padding-left: 20px">
+                        <select id="tim" name="tim" style="width:400px" asp-for="tim" class="form-control">
+                            <option value="@((string)Session["time"])">@Session["time"]</option>
+
+                        </select>
+                    </div>
+                    <p></p>
+                    <label for="amt">Enter the Number of tickets</label>
+                    <p></p>
+                    <div class="form-group" style="padding-left: 20px">
+                        <input type="text" id="amt" name="amt" rows="1" style=" width: 400px; align-content: center" asp-for="amt" class="form-control">
+                    </div>
+                    <p></p>
+                    <label for="cdNo">Enter the Credit card Number</label>
+                    <p></p>
+                    <div class="form-group" style="padding-left: 20px">
+                        <input type="number" min="1" id="cdNo" name="cdNo" rows="1" style=" width: 400px; align-content: center" asp-for="amt" class="form-control">
+                    </div>
+                    <p></p>
+                    <button type="submit" class="btn btn-primary" style="background-color:red;border-block-color:red">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    }
+}
+<div>
+    <p>
+
+        <br />
+        <br />
+        <br />
+    </p>
+</div>
+<!-- Using a link element -->
+<!--<a  asp-area="" asp-page="/Index">Model.name</a>-->
+@*<script>function performAction1() {
+            // Perform your desired action here
+
+        }
+    </script>*@
+
+@*</div>*@
+@*</div>*@
+

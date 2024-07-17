@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Data;
+
+<h2 style="text-align:center;font-size:30pt;font-family:'Times New Roman', Times, serif">@Session["name"]</h2>
+<br />
+<p>
+
+</p>
+<h2 style="text-align:center;font-size:20pt;font-family:'Times New Roman', Times, serif">@Session["email"]</h2>
+<p>
+
+</p>
+@if ((string)@ViewData["flag"] != "1")
+{
+    <a href="/Home/Account?data=1">Edit Profile</a>
+
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+
+    <div>
+        <div class="form-background">
+            <br />
+            <div class="movie-column">
+                <h3 style="font-family:'Times New Roman', Times, serif ;font-size:20pt">Movie</h3>
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <div class="movie-review" style="font-family:'Times New Roman', Times, serif ;font-size:20pt">
+                        <span>@row["Mname"]</span>
+                    </div>          }
+            </div>
+
+            <p style="color:black">
+                1
+                1
+                1
+            </p>
+            <div class="review-column" style="font-family:'Times New Roman', Times, serif ">
+                <h3 style="font-size:20pt">Review</h3>
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <div class="movie-review" style="font-family:'Times New Roman', Times, serif ;font-size:20pt">
+                        <a href="/Home/Rating?data=@row["Mname"]">Review</a>
+                    </div>          }
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+
+
+    @*<p style="font-size:30pt;font-family:'Times New Roman', Times, serif">@Session["Mname"]</p>*@
+    <div class="form-background">
+        @*<div style="font-family:'Times New Roman', Times, serif">
+                <h1>Booking Info</h1>
+            </div>*@
+        <form method="post">
+            <div>
+
+                <label for="Uname">Enter Your Name</label>
+                <p></p>
+                <div class="form-group" style="padding-left: 20px; backdrop-filter: blur(50px)">
+                    <input id="user" rows="1" name="user" value="@(!string.IsNullOrEmpty(Session["name"]?.ToString()) ? Session["name"].ToString() : "")" style="width:400px" asp-for="user" class="form-control" />
+                </div>
+                <p></p>
+                <label for="UserEmail">Enter Your Email</label>
+                <p></p>
+                <div class="form-group" style="padding-left: 20px">
+                    <input type="email" id="email" name="email" value="@(!string.IsNullOrEmpty(Session["email"]?.ToString()) ? Session["email"].ToString() : "")" style="width:400px" class="form-control" required>
+                </div>
+                <p></p>
+                <label for="phone">Enter New Phone</label>
+                <p></p>
+                <div class="form-group" style="padding-left: 20px">
+                    <input type="tel" id="phone" name="phone" style="width:400px" class="form-control" required>
+                </div>
+                <p>
+
+                </p>
+                <button type="submit" class="btn btn-primary" style="background-color:red;border-block-color:red">Submit</button>
+            </div>
+        </form>
+
+    </div>
+
+}

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Adminbooking";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using System.Data;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin-Add ons</title>
+    <style>
+        body {
+            background-color: black;
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+        }
+
+        .container {
+            display: flex;
+            padding-right: 70pt;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin:-5pt">
+        <div style="padding-left:330pt;padding-right:270pt ;padding-bottom:5pt;padding-top:5pt">
+            <h1 style="text-align:center;color:red">Six Eye Cinema Shows</h1>
+        </div>
+        <div style="padding-top:10pt;padding-bottom:50pt;padding-left:10pt">
+            <div style="margin: 0 auto; color: black;font-size: 20px; padding-left: 200pt">
+                <table border="1" style="border-color:red">
+                    <tr bgcolor="red" style="border-spacing:20px">
+                        <th style="border: 1px solid black;">Serial no.</th>
+                        <th style="border: 1px solid black;">Customer Email</th>
+                        <th style="border: 1px solid black;">Movie</th>
+                        <th style="border: 1px solid black;">Screen ID</th>
+                        <th style="border: 1px solid black;">Date</th>
+                        <th style="border: 1px solid black;">Time </th>
+                        <th style="border: 1px solid black;">Tickets</th>
+                        <th style="border: 1px solid black;">Total Bill</th>
+                    </tr>
+                    @foreach (DataRow row in Model.Rows)
+                    {
+                        <tr bgcolor="black" style="border-spacing:20px">
+                            <td style="color: red ;border: 1px solid red;">@row["Serial_no"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["Email"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["mid"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["Scid"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["Book_date"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["time_slotid"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["tickets"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["Totalprice"]</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="container" style="color:black;padding-right:60pt;padding-top:30pt;margin:0 auto;width:80%">
+                <div style="padding-left: 200pt;font-size:15px">
+                    <h1 style="color:black;text-align:center">
+                        Delete A Show
+                    </h1>
+                    <form action="/Home/Adminbooking" method="post">
+                        <table border="1" bgcolor="red" height="300" width="300">
+                            <tr>
+                                <td>Enter Serial no.</td>
+                                <td><input type="number" min ="1" name="SN" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center"><input type="submit" value="Delete Data" /></td>
+                            </tr>
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+            <div style="text-align:center;color:white;font-size:30pt">
+                @ViewBag.result
+            </div>
+        </div>
+    </div>
+</body>
+</html>

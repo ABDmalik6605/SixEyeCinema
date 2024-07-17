@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Adminscreen";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using System.Data;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin-Screens</title>
+    <style>
+        body {
+            background-color: black;
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+        }
+
+        .container {
+            display: flex;
+            padding-right: 70pt;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin:-5pt">
+        <div style="padding-left:300pt;padding-right:300pt ;padding-bottom:5pt;padding-top:5pt">
+            <h1 style="text-align:center;color:red">Six Eye Cinema Shows</h1>
+        </div>
+        <div style="padding-top:10pt;padding-bottom:50pt;padding-left:10pt">
+            <div style="margin: 0 auto; color: black;font-size: 20px; padding-left: 200pt">
+                <table border="1" style="border-color:red">
+                    <tr bgcolor="red" style="border-spacing:20px">
+                        <th style="border: 1px solid black;">Screen ID</th>
+                        <th style="border: 1px solid black;">Total Seats</th>
+                        <th style="border: 1px solid black;">Price per seat</th>
+                    </tr>
+                    @foreach (DataRow row in Model.Rows)
+                    {
+                        <tr bgcolor="black" style="border-spacing:20px">
+                            <td style="color: red ;border: 1px solid red;">@row["SCID"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["T_seats"]</td>
+                            <td style="color: red ;border: 1px solid red;">@row["Price"]</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="container" style="color:black;padding-right:60pt;padding-top:30pt;margin:0 auto;width:80%">
+                <div sstyle="font-size:15px">
+                    <h1 style="color:black;text-align:center">
+                        Enter a screen
+                    </h1>
+                    <form action="/Home/Adminscreen" method="post">
+                        <table border="1" bgcolor="red" height="300" width="300">
+                            <tr>
+                                <td>Screen Id </td>
+                                <td><input type="text" name="sid" /></td>
+                            </tr>
+                            <tr>
+                                <td>Total Seats </td>
+                                <td><input type="number" min="1" name="tseats" /></td>
+                            </tr>
+                            <tr>
+                                <td>Price </td>
+                                <td><input type="number" min="1" name="price" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center"><input type="submit" value="Save Data" /></td>
+                            </tr>
+                        </table>
+                        @ViewBag.result
+                    </form>
+                </div>
+                <p style="color:black">
+
+                </p>
+                <div style="padding-left: 30pt;font-size:15px">
+                    <h1 style="color:black;text-align:center">
+                        Edit A Show
+                    </h1>
+                    <form action="/Home/Adminscreen" method="post">
+                        <table border="1" bgcolor="red" height="300" width="300">
+                            <tr>
+                                <td>Enter Screen Id </td>
+                                <td><input type="text" name="sid1" /></td>
+                            </tr>
+                            <tr>
+                                <td>Set Screen Id </td>
+                                <td><input type="text" name="sid" /></td>
+                            </tr>
+                            <tr>
+                                <td>Set Total Seats </td>
+                                <td><input type="number" min="1" name="tseats" /></td>
+                            </tr>
+                            <tr>
+                                <td>Set Price </td>
+                                <td><input type="number" min="1" name="price" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center"><input type="submit" value="Edit Data" /></td>
+                            </tr>
+                        </table>
+                        @ViewBag.result
+                    </form>
+                </div>
+                <div style="padding-left: 30pt;font-size:15px">
+                    <h1 style="color:black;text-align:center">
+                        Delete A Show
+                    </h1>
+                    <form action="/Home/Adminscreen" method="post">
+                        <table border="1" bgcolor="red" height="300" width="300">
+                            <tr>
+                                <td>Screen ID</td>
+                                <td><input type="text" name="sid" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center"><input type="submit" value="Delete Data" /></td>
+                            </tr>
+                        </table>
+                        @ViewBag.result
+                    </form>
+                </div>
+            </div>
+            <div style="text-align:center;color:white;font-size:30pt">
+                @ViewBag.result
+            </div>
+        </div>
+    </div>
+</body>
+</html>

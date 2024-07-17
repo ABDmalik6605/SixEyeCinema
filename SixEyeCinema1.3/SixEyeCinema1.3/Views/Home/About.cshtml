@@ -1,0 +1,370 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .mainhead {
+            background-color: red;
+            padding: 5px;
+            color: white;
+            text-align: left;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            color: black;
+            text-decoration-style: wavy;
+        }
+
+        .bottom-left {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+        }
+
+        .top-left {
+            position: absolute;
+            color: red;
+            top: 8px;
+            left: 16px;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 8px;
+            right: 16px;
+        }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+        }
+
+        .abovecentered {
+            color: red;
+            position: absolute;
+            top: 14%;
+            left: 35%;
+            font-size: 15px;
+            <!-- left perc, right perc, bottom perc--> transform: translate(-50%, -50%);
+        }
+
+        .centered {
+            position: absolute;
+            top: 22%;
+            left: 45%;
+            <!-- left perc, right perc, bottom perc--> transform: translate(-50%, -50%);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px grey;
+            font-size: 60px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-decoration: underline;
+            -moz-text-decoration-style: solid;
+            text-decoration-color: black;
+        }
+
+        .exceptions {
+            font-size: 70px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .subheading {
+            text-align: center;
+            font-size: 20px;
+            color: grey;
+        }
+
+        .greyback {
+            background-color: red;
+            text-align: center;
+            font-size: 20px;
+            color: yellow;
+        }
+
+        .textinsert {
+            text-align: left;
+            font-size: 15px;
+            color: white;
+            background-color: black;
+        }
+
+        .intro {
+            background-blend-mode: color-burn;
+        }
+
+        pre {
+            display: block;
+            font-family: monospace;
+            white-space: pre;
+            margin: 1em 0;
+        }
+
+        pren {
+            font-family: monospace;
+        }
+
+        .backimg {
+            background-color: red;
+            color: white;
+            font-size: 15px;
+            font-family: monospace;
+        }
+
+        .bubbles {
+            color: white;
+            font-size: 15px;
+        }
+
+        .headleft {
+            color: palegoldenrod;
+            text-align: left;
+            font-size: 30px;
+        }
+
+        .headright {
+            color: palegoldenrod;
+            font-size: 30px;
+        }
+
+        .world {
+            text-align: center;
+            font-size: 55px;
+            color: lightgrey;
+        }
+
+        .state {
+            text-align: center;
+            font-size: 20px;
+            color: red;
+        }
+
+        .vision {
+            color: brown;
+            background-color: lightgrey;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .redleft {
+            text-align: center;
+            font-size: 20px;
+            color: yellow;
+        }
+
+        .wait {
+            color: yellow;
+            font-size: 30px;
+        }
+
+        .contact {
+            color: black;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .email {
+            color: blue;
+            text-align: left;
+        }
+
+        footer {
+            background-color: dimgrey;
+            color: white;
+            text-align: left;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+  <p style="color:black">
+      1
+      2
+      3
+  </p>
+    <div class="container">
+        <img src="~/siteImage/bye.jpeg" alt="background" width="1000" height="550">
+        <div class="bottom-left">Bottom Left</div>
+        <div class="top-left">""</div>
+        <div class="top-right">Top Right</div>
+        <div class="bottom-right">Bottom Right</div>
+        <div class="abovecentered">You're Watching ...</div>
+        <div class="centered">ABOUT US</div>
+    </div>
+    <p style="color:black">
+        1
+        2
+    </p>
+    <br />
+
+    
+    <h5 class="greyback">WE ARE THE EXCEPTION</h5>
+    <img src="~/siteImage/points.jpeg" alt="background" width="940" height="500">
+    <div class="textinsert">
+        <pre>           We promise you a reliable environment           To provide a such an amazing experience         To be the most favourable entertainment</pre>
+        <pre>           that you'll find no where else & you            that people forget to watch movies at            destination,we strive to be exceptional!</pre>
+        <pre>           can count on us                                 home
+
+	</pre>
+
+    </div>
+    <p></p>
+    <br />
+
+
+    <p><strong>Float the image to the left:</strong></p>
+    <p>
+        <div class="backimg">
+            <img src="~/siteImage/wall.jpeg" style="float:left;width:200px;height:350px;">
+            <pre>
+
+            <h9 class="vision">HERE, WE ARE THE EXCEPTION ...</h9>
+		We at  Six Eye Cinema , offer the most eminent movie experience. Our objective
+		is to provide our customers with great quality controlled standards and services
+		to value their time and money. Our hardworking team ensures the availabilty of all 
+		perks and facilities such as online booking etc. We strive to meet customer needs
+		and expectations in the best way possible to mark ourselves as the most exceptional 
+		entertainment providing cinema out there ! 
+
+		Six Eye Cinema brings you the most latest and trending shows out there. We try our best
+		to maintain and improve our quality control standards. Our cinema promises to provide its 
+		customers with a great ambiance, latest screens and movies,comfortable seats & the perk
+		of booking your tickets online. We listen to customer preferences and are mindful of all 
+		cultural constraints as well. Our cinema expects its customers to have a great time with
+		family and friends ...
+		</pre>
+        </div>
+    </p>
+
+    <h10 class="world">A place full of entertainment ... </h10>
+    <br />
+    <h11 class="redleft">At your service</h11>
+    <p><strong>Float the image to the left:</strong></p>
+    <p>
+        <div class="bubbles">
+            <img src="~/siteImage/work.jpeg" style="float:right;width:500px;height:300px;">
+            <pre>    
+				
+			
+            <br />
+            <h7 class="headleft">Who We Are</h7>
+            <br />
+		Six Eye Cinema is the most exceptional cinema out there which has  
+	        become a reality with the efforts of , a group of FAST-Lahore 
+	        undergraduates who aim to launch the best cinema in the country
+		to provide people with an exceptional experience.We strive 
+		to deliver reliable services & environment.
+            <h12 class="state">We value our customers... </h12>
+		</pre>
+        </div>
+    </p>
+
+    <p></p>
+    <br />
+    <p></p>
+    <br />
+
+
+    <p style="color:black"><strong>Float the image to the left:</strong></p>
+    <p>
+        <div class="bubbles">
+            <img src="~/siteImage/yes.jpeg" style="float:left;width:500px;height:400px;">
+            <pre>
+            <h8 class="headright">Mission Statement</h8>
+
+	Our ultimate mission is to provide you with movies and shows which
+	you can enjoy with your family and friends. We at Six Eye Cinema are 
+	focused on creating a network of cinema all across Pakistan. We aspire
+	to maintain and keep track of all services and facilities and provide
+	the absolut best to our customers.We are one step ahead in providing 
+	HD quality cinematic experience though the best projection screens 
+	with best brightness and quality.
+
+	We want to provide our customers with an amazing experience, one they 
+	have never experienced before.We appreciate and work upon customer 
+	reviews and feedbacks.
+            <h13 class="state">'To become truly exceptional ...'</h13>
+		
+		</pre>
+        </div>
+    </p>
+
+    <p></p>
+    <br />
+
+    @*<p><strong>Float the image to the left:</strong></p>*@
+    <p>
+        <div class="bubbles">
+            <img src="~/siteImage/collage.jpeg" style="float:left;width:1115px;height:600px;">
+            <pre>
+
+
+
+
+
+
+		</pre>
+        </div>
+    </p>
+
+    <h8 class="world">Enter the most fascinating world!</h8>
+    <br />
+    <h9 class="state">Our doors are open for you ... </h9>
+
+    <p style="color:black"><strong>Float the image to the left:</strong></p>
+    <p>
+        <div class="bubbles">
+            <img src="~/siteImage/great.jpeg" style="float:right;width:530px;height:600px;">
+            <pre>
+		
+		
+		
+Six Eye Cinema wants to transform the way people look at cinemas 
+We provide the most spectacular movie experience out there with the 
+aim to expand our network throughout Pakistan to help people enjoy 
+movies with family and friends. We are the only cinema that with a 
+  aesthetic architecture and extraordinary facilities.You can experience 
+great ambiance one never experienced before.We are an entertainment 
+destination open for people of all ages.We have marked our impression
+among wide age group and strive to make a loyal user base.
+
+<h13 class="wait">Well, what are you waiting for? </h13>
+
+We have introduced ourselves in the market with mission of elevating movie 
+viewing experience and becoming a complete exception ... ! Our team works
+to provide sarisfaction to our customers and stays well updated and informed
+of all the upcoming trends and makes extreme efforts to provide a special 
+experience to the viewers.We are continiously acquiring opportunities to 
+keep ourselves growing . We have differentiated ourselves by providing our 
+customers with best projection screens, recliner seats & smooth online 
+booking.We are always one step ahead in by providing HD quality cinematic
+experience through noteworthy quality control standards.
+
+<h14 class="state">Visit us once and you'll be amazed</h14>
+<h15 class="state">to see the exceptional difference ...</h15>
+<br /><br />
+
+
+            
+    </pre>
+            
+        </div>
+    </p>
+
+
+
+</body>
+</html>

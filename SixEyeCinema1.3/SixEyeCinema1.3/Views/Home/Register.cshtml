@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/styles2.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+@*<div class="body" style="backdrop-filter: blur(50px);">*@
+@*<div class="text-center" >*@
+<h2 class="display-4"></h2>
+@*<iframe width="800" height="425" src="https://www.youtube.com/embed/_inKs4eeHiI?si=O8fBXqJI-wTh82PQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>*@
+<div class="video-container">
+    <video autoplay muted loop>
+        <source src="~/siteImage/video.mp4" type="video/mp4">
+        <!-- Add additional video sources for different formats if needed -->
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="container1">
+    <h1>Six Eye Cinema Registeration</h1>
+    <p> Register yourself to become our Member</p>
+    <form action="/Home/Register" method="post">
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group" s>
+            <label for="dateOfBirth">Enter your date of Birth :</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" style="width:460px;height:40px" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Set Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="Phone no.">Phone no.:</label>
+            <input type="text" id="Phone no." name="Phone" required>
+        </div>
+            <button type="submit">Register</button>
+        @ViewBag.result
+</form>
+</div>
+

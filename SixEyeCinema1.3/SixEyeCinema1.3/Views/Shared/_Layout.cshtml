@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ViewData["Title"] - Six Eye Cinema</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <style>
+        .navbar-nav .nav-link:hover {
+            background-color: black; /* Change background color on hover */
+            color: white; /* Change text color on hover */
+        }
+
+        ul {
+            list-style: none;
+            /*            background: #22438C; */
+            background-color: red;
+        }
+
+            ul li {
+                display: inline-block;
+                position: relative;
+            }
+
+                ul li ul.dropdown li {
+                    display: block;
+                }
+
+                ul li ul.dropdown {
+                    width: 100%;
+                    background: red;
+                    position: absolute;
+                    z-index: 999;
+                    display: none;
+                    text-align: center;
+                }
+
+                ul li a:hover {
+                    background: orange;
+                }
+
+                ul li:hover ul.dropdown {
+                    padding: 10px;
+                    display: block;
+                }
+
+        html {
+            font-size: 14px;
+        }
+
+
+
+        .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+            box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+        }
+
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin-bottom: 60px;
+            background-color: black;
+            padding-bottom: 10px;
+            padding-top: 0.5px
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  mb-3" style="background-color:red">
+            <div class="container" style="background-color: red; justify-content:right">
+                <a class="navbar-brand" asp-area="" asp-page="/Index" style="color: white ;font-size: 30px">Six Eye Cinema</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <ul class="navbar-nav flex-grow-1" style="justify-content:right ">
+                        <li>
+                            <a class="nav-link" asp-area="" href="/Home/Index" style="font-size:20px ;color:white">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text" asp-area="" href="/Home/About" style="font-size:20px ; color:white">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text" asp-area="" href="/Home/sign_in" style="font-size:20px ; color:white">sign_in</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text" asp-area="" href="/Home/Register" style="font-size:20px ; color:white">Have 6 eyes</a>
+                        </li>
+
+
+                        <li>
+                            <a class="nav-link" href="#" style="color: black; font-size: 20px; color:white">Offerings▾</a>
+                            <ul class="dropdown">
+                                <li class="nav-item">
+                                    <a class="nav-link text" asp-area="" href="/Home/movies" style="font-size:20px; color:white">movies</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link text" asp-area="" href="/Home/anime" style="font-size:20px;color :white">animes</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" href="/Home/series" style="font-size:20px ; color:white">series</a></li>
+                            </ul>
+                        </li>
+                        @if (!string.IsNullOrEmpty(Session["name"]?.ToString()))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text" asp-area="" href="/Home/Account" style="font-size:20px ; color:white">Account</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container" style="color: white;text-align:center">
+        <main role="main" class="pb-3">
+            @RenderBody()
+
+        </main>
+    </div>
+
+    <div>
+        <p color:black>
+            1
+            1
+        </p>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - again - <a asp-area="" asp-page="/About">About</a>
+        </div>
+    </footer>
+    <h16 class="contact" style="color:white">Contact Us At:</h16>
+    <h17 class="email" style="color:white">SixEyeCinema@gmail.com</h17>
+
+    <div style="font-size:30px;color:white;text-align:center">
+        <pre>Sameer Ahmad Ansari                               Abdullah Malik
+Abdul Mannan Faraz                                   Sikander 
+
+		</pre>
+       
+    </div>
+    @if (!string.IsNullOrEmpty(Session["name"]?.ToString()))
+    { <div style="color:white;width:200px;height:40px;text-align:center;align-content:center;justify-self:center;padding-left:450pt">
+    <form id="logoutForm" action="logout" method="post" >
+        <button type="submit" style="background-color:red;width:60pt;height:20pt">Log Out</button>
+    </form>
+
+</div>
+    }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @*@await RenderSectionAsync("Scripts", required: false)*@
+</body>
+</html>
+
+@*//ytftfdtyftuftu
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Website</title>
+         Bootstrap CSS
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="site.css" asp-append-version="true" />
+       </head>
+
+    </html>*@
+@*<style>
+        /*.headtext {
+            text-align: center;
+            color: hsl(0, 70%, 30%);
+            <!-- background-color: Green; -->
+            border: dotted red;
+            <!-- padding: 40px; -->
+            font-size: 20pt
+        }
+
+        .text {
+            text-align: center;
+            color: hsl(332, 80%, 80%);
+            border: dotted red;
+            background-color: Blue;
+            padding: 10px;
+            font-size: 20pt
+        }
+
+        .padding {
+            padding: 30px;
+        }
+
+        .bdy {
+            background-color: Green;
+        }*/
+        /* Custom CSS for additional styling */
+        /*body {
+            background-color: maroon;
+            <!-- padding-top: 10px;*/ /* Adjust body padding to avoid content overlapping with fixed navbar */ /*-->
+        }
+
+        .text2 {
+            text-align: center;
+            color: hsl(120, 70%, 20%);
+            ;
+            background-color: cyan;*/
+            /* <!-- border:dotted red; -->*/
+            /*font-size: 20pt
+        }*/
+        /* Custom CSS for button styling */
+        .navbar-nav .nav-link {
+            color: black; /* Set text color */
+            font-weight: bold; /* Make text bold */
+            padding: 15px; /* Add padding around the text */
+            transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+            font-size: 20px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            <!-- .navbar-nav .nav-link:hover { -->
+                <!-- background-color: green; /* Change background color on hover */ -->
+                <!-- color: white; /* Change text color on hover */ -->
+                <!--
+            }
+        -->
+        <!-- ul { -->
+            <!-- list-style: none; -->
+            <!-- background: #22438C; -->
+            <!--
+        }
+            -->
+            ul li {
+                display: inline-block;
+                position: relative;
+            }
+
+                ul li ul.dropdown li {
+                    display: block;
+                }
+
+                ul li ul.dropdown {
+                    width: 100%;
+                    background: red;
+                    position: absolute;
+                    z-index: 999;
+                    display: none;
+                    text-align: center;
+                }
+
+                ul li a:hover {
+                    background: orange;
+                }
+
+                ul li:hover ul.dropdown {
+                    padding: 0px;
+                    display: block;
+                }
+    </style>*@
+
+//
+<!--<body>
+  <form id="form1" runat="server">
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  mb-3" style="background-color:red">
+          <div class="container" style="background-color: red; justify-content:right">-->
+<!-- <a class="navbar-brand" href="#">Navbar</a> -->
+<!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link text" asp-area="" asp-page="/Index" style="font-size:20px ">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text" asp-area="" asp-page="/Booking" style="font-size:20px ">Booking</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text" asp-area="" asp-page="/Privacy" style="font-size:20px ">Privacy</a>
+
+        </li>-->
+<!-- <ul> -->
+<!--<li>
+    <a class="nav-link" href="#">Offerings▾</a>
+    <ul class="dropdown">
+        <li><a class="nav-link" href="#">movies</a></li>
+        <li><a class="nav-link" href="#">animes</a></li>
+        <li><a class="nav-link" href="#">series</a></li>
+    </ul>
+</li>-->
+<!-- </ul> -->
+<!-- <a href="#">Dropdown ▾</a> -->
+<!-- <ul class="dropdown"> -->
+<!-- <li><a href="#">HTML</a></li> -->
+<!-- <li><a href="#">CSS</a></li> -->
+<!-- <li><a href="#">JavaScript</a></li> -->
+<!-- <li><a href="#">PHP</a></li> -->
+<!-- <li class="nav-item dropdown"> -->
+<!-- <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!-- Dropdown -->
+<!-- </a> -->
+<!-- <ul class="dropdown-menu"> -->
+<!-- <li><a class="dropdown-item" href="booking.html">Action</a></li> -->
+<!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+<!-- <li><hr class="dropdown-divider"></li> -->
+<!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+<!--<li class="nav-item">
+                    <a class="nav-link disabled"></a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" style="background-color:green">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+</nav>
+
+</header>
+<div class="container" style="color: white;text-align:center">
+    <main role="main" class="pb-3">
+      //  RenderBody()
+
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2024 - again - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>-->
+@*@await RenderSectionAsync("Scripts", required: false)*@
+<!--</form>
+</body>-->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> - Six Eye Cinema</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-3" style="background-color: red;">
+            <div class="container-fluid" style="background-color: red;">
+                <a class="navbar-brand" asp-area="" asp-page="/Index" style="color: white; font-size: 30px;">Six Eye Cinema</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link"  asp-area="" asp-container="Home" asp-action="Index" style="font-size: 20px;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  asp-area="" asp-container="Home" asp-action="About" style="font-size: 20px;">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="~/Views/Home/sign_in" style="font-size: 20px;">sign_in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+    <div class="container" style="color: white;text-align:center">
+        <main role="main" class="pb-3">
+           RenderBody()
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - again - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>-->
+
+    @*@await RenderSectionAsync("Scripts", required: false)*@
+<!--</body>
+</html>-->

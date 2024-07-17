@@ -1,0 +1,208 @@
+﻿@using System.Data;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="site.css" asp-append-version="true" />
+    <style>
+        .column {
+            float: left;
+            width: 33.33%;
+            border: solid red;
+            box-sizing: border-box;
+        }
+
+        .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .text2 {
+            text-align: center;
+            color: black;
+            background-color: black;
+            font-size: 20pt;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 300pt;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider-image {
+            width: 300pt;
+            height: auto;
+            transition: transform 0.5s ease;
+            object-fit: cover;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: red;
+            color: black;
+            border: solid black;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text2">
+            <div>
+                <p> </p>
+            </div>
+            <div style="font-size:30pt;background-color:black;color:white;text-align:center">
+                <p>Now Showing!</p>
+            </div>
+            @{
+                var rowCount = 0;
+            }
+            <div class="row">
+                @foreach (DataRow row in Model.DataFromFirstProcedure.Rows)
+                {
+                    <div class="column">
+                        <p style="color:black;font-size: 0.5pt"> 3</p>
+                        <div style="font-size:20pt;text-align: center;background-color:red;color:white">@row["Mname"]</div>
+                        <div>
+                            <p style="color:black;font-size: 5pt"> 3</p>
+                            <a href="/Home/booking?data=@row["Mname"]">
+                                <img src="~/siteImage/@row["picture"]" alt="oppenheimer" class="responsive-image" />
+                            </a>
+                            <p style="color:black;font-size: 5pt"> 3</p>
+                        </div>
+                    </div> rowCount++;
+                    if ((rowCount % 3) == 0)
+                    {
+                    @:</div><div class="row">
+                    }
+                }
+            </div>
+            <div style="color:black;font-size: 20pt">
+                <p> 3</p>
+            </div>
+            <div class="container">
+                <div class="text2">
+                    <div style="font-size:30pt;background-color:black;color:white;text-align:center">
+                        <p>Coming Soon</p>
+                    </div>
+                    <div>
+                        <p> </p>
+                    </div>
+                    @{
+                        rowCount = 0;
+                    }
+                    <div class="row">
+                        @foreach (DataRow row in Model.DataFromSecondProcedure.Rows)
+                        {
+                            <div class="column">
+                                <p style="color:black;font-size: 0.5pt"> 3</p>
+                                <div style="font-size:20pt;text-align: center;background-color:red;color:white">@row["Name"]</div>
+                                <div>
+                                    <p style="color:black;font-size: 5pt"> 3</p>
+
+                                    <img src="~/siteImage/@row["picture"]" alt="oppenheimer" class="responsive-image" />
+
+                                    <p style="color:black;font-size: 5pt"> 3</p>
+                                </div>
+                            </div> rowCount++;
+                            if ((rowCount % 3) == 0)
+                            {
+                            @:</div><div class="row">
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="~/siteImage/hall2.jpg" alt="Image 1" class="slider-image" />
+                    <img src="~/siteImage/food.jpg" alt="Image 2" class="slider-image" />
+                    <img src="~/siteImage/experience.jpg" alt="Image 3" class="slider-image" />
+                </div>
+                <button2 class="prev" onclick="prevSlide()">&#10094;</button2>
+                <button2 class="next" onclick="nextSlide()">&#10095;</button2>
+            </div>
+            <script>
+                let slideIndex = 0;
+                const slides = document.querySelectorAll('.slider img');
+
+                function showSlide(index) {
+                    slides.forEach(slide => {
+                        slide.style.transform = `translateX(-${index * 100}%)`;
+                    });
+                }
+
+                function nextSlide() {
+                    slideIndex++;
+                    if (slideIndex >= slides.length) {
+                        slideIndex = 0;
+                    }
+                    showSlide(slideIndex);
+                }
+
+                function prevSlide() {
+                    slideIndex--;
+                    if (slideIndex < 0) {
+                        slideIndex = slides.length - 1;
+                    }
+                    showSlide(slideIndex);
+                }
+
+                function autoSlide() {
+                    nextSlide();
+                }
+
+                // Automatically move to the next slide every 4 seconds
+                setInterval(autoSlide, 4000);
+
+                showSlide(slideIndex);
+            </script>
+            <div style="font-size:30pt;color:white;">
+                <p>Well,what are you waiting for?</p>
+            </div>
+
+            <!-- Bootstrap JS (optional if you require dropdowns or other JS features) -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <script src="js/bootstrap"></script>
+            </div>
+        </div>
+</body>
+</html>

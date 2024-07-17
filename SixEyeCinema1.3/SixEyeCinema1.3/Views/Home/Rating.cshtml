@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Rating";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="background-image: url('../../siteImage/backG.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; ">
+    <style>
+        .form-background {
+            background-image: url('../../siteImage/backG2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items: center; /* Center the form vertically */
+            height: 80vh; /* Ensure the form container takes up the full height of the viewport */
+            border-radius: 10%;
+            width: 400pt;
+            height: 390pt;
+            /*margin-left:150pt;*/
+            justify-content: center; /* Center the form horizontally */
+            box-shadow: 0 0 20px rgb(76 255 0 );
+            margin: 0 auto;
+        }
+    </style>
+
+    <h2 style="text-align:center;font-size:30pt;font-family:'Times New Roman', Times, serif">@Session["movie"]</h2>
+
+    <div style="text-align:center;color:white;font-size:30pt">
+        @ViewBag.result
+    </div>
+    <br />
+    <p>
+
+    </p>
+    <div class="form-background">
+        @*<div style="font-family:'Times New Roman', Times, serif">
+                <h1>Booking Info</h1>
+            </div>*@
+        <form method="post">
+            <div>
+
+                <p></p>
+                <label for="rating" style="color: oldlace;font-size:20px">Enter the rating</label>
+                <p></p>
+                <div class="form-group" style="padding-left: 20px">
+                    <input type="number" min="1" max="5" id="rating" name="rating" style="width:400px" class="form-control" required>
+                </div>
+                <p></p>
+                <label for="comment" style="color: oldlace; font-size: 20px">Enter The Riveiw</label>
+                <p></p>
+                <div class="form-group" style="padding-left: 20px">
+                    <input type="text" id="comment" name="comment" style="width:400px" class="form-control" required>
+                </div>
+                <p>
+
+                </p>
+                <button type="submit" class="btn btn-primary" style="background-color: mediumseagreen; border-block-color: mediumseagreen">Submit</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
