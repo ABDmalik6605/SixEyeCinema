@@ -77,5 +77,5 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Contact
 
-- **Author:** [Your Name](https://github.com/yourusername)
-- **Email:** your.email@example.com
+- **Author:** [Abdullah Malik](https://github.com/ABDmalik6605)
+- **Email:** abdullahmalik@gmail.com
