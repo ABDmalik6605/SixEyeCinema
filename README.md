@@ -7,7 +7,7 @@ SixEyeCinema is a web-based application designed to manage and browse a cinema's
 ## Features
 
 - Browse current movie listings
-- View movie details including synopsis, cast, and showtimes
+- View movie details including genres, age ratings, and showtimes
 - User authentication and authorization
 - Admin panel for managing movie listings and showtimes
 
